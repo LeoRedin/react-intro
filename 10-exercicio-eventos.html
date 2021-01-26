@@ -4,18 +4,30 @@
   <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development"></script>
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
-    const state = {eventCount: 0, username: ''}
+    const state = { eventCount: 0, username: '' }
 
     function App() {
+      function handleClick() {
+        setState({ eventCount: state.eventCount + 1 })
+      }
+
+      function handleChange(event) {
+        console.log(
+          '🚀 ~ file: 10-exercicio-eventos.html ~ line 15 ~ handleChange ~ event',
+          event,
+        )
+        setState({ username: event.target.value })
+      }
+
       return (
         <div>
-          <p>Você clicou {state.eventCount} vezes no botão</p>
+          <p>Você clicou {state.eventCount} vez(es) no botão</p>
           <p>
-            <button>Clique</button>
+            <button onClick={handleClick}>Clique</button>
           </p>
           <p>Seu usuário é: {state.username}</p>
           <p>
-            <input />
+            <input onChange={handleChange} />
           </p>
           <p>
             <button>adicionar usuário</button>

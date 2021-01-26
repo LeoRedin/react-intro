@@ -1,14 +1,30 @@
 <body>
   <div id="root"></div>
-  <script src="https://unpkg.com/react@16.13.1/umd/react.development"></script>
-  <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development"></script>
+  <script src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
     const rootElement = document.getElementById('root')
-    // const element = <div className="container">Olá Mundo</div>
-    const helloElement = React.createElement('span', null, 'Hello')
-    const worldElement = React.createElement('span', null, 'World')
-    // como renderizar os dois?
-    ReactDOM.render(element, rootElement)
+
+    function App() {
+      return (
+        <>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+        </>
+      )
+    }
+
+    ReactDOM.render(<App />, rootElement)
   </script>
 </body>

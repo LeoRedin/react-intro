@@ -5,15 +5,23 @@
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
     function Greeting() {
-      const [name, setName] = React.useState('')
+      const [name, setName] = React.useState(() => {
+        console.log('iniciando state ...')
+        return localStorage.getItem('name') || ''
+      })
 
-      const handleChange = (event) => setName(event.target.value)
+      const handleChange = event => setName(event.target.value)
+
+      React.useEffect(() => {
+        console.log('efeito! 🚀')
+        window.localStorage.setItem('name', name)
+      })
 
       return (
         <div>
-          <form>
+          <form autoComplete="off">
             <label htmlFor="name">Nome:</label>
-            <input id="name" onChange={handleChange} />
+            <input id="name" onChange={handleChange} value={name} />
           </form>
           {name ? <strong> Olá {name} </strong> : 'Digite seu nome'}
         </div>

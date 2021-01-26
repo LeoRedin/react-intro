@@ -1,7 +1,7 @@
 <body>
   <div id="root"></div>
-  <script src="https://unpkg.com/react@16.13.1/umd/react.development"></script>
-  <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development"></script>
+  <script src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <style>
     .box {
@@ -25,12 +25,34 @@
     }
   </style>
   <script type="text/babel">
-    const element = (
-      <div>
-        <div>caixa lightblue pequena</div>
-      </div>
-    )
+    function Box({ className = '', style = {}, size, ...rest }) {
+      const sizeClassName = size ? `box--${size}` : ''
 
-    ReactDOM.render(element, document.getElementById('root'))
+      return (
+        <div
+          className={`box ${className} ${sizeClassName}`}
+          style={{ fontStyle: 'italic', ...style }}
+          {...rest}
+        />
+      )
+    }
+
+    function App() {
+      return (
+        <>
+          <Box size="small" style={{ backgroundColor: 'lightblue' }}>
+            caixa lightblue pequena
+          </Box>
+          <Box size="medium" style={{ backgroundColor: 'pink' }}>
+            caixa rosa média
+          </Box>
+          <Box size="large" style={{ backgroundColor: 'orange' }}>
+            caixa laranja grande
+          </Box>
+        </>
+      )
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'))
   </script>
 </body>
